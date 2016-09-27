@@ -14,6 +14,7 @@ public class CordovaFancyImagePicker extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+        callbackContext.success("Test success");
         if (action.equals("selectPhotos")) {
             String message = args.getString(0);
             this.selectPhotos(message, callbackContext);

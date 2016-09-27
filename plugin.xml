@@ -3,7 +3,7 @@
     <name>CordovaFancyImagePicker</name>
     
     <js-module name="CordovaFancyImagePicker" src="www/CordovaFancyImagePicker.js">
-        <clobbers target="fancyImagePicker" />
+        <clobbers target="FancyImagePicker" />
     </js-module>
 
     <platform name="android">
