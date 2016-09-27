@@ -15,8 +15,8 @@ public class CordovaFancyImagePicker extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        Log.d("execute >>>>>>>>>>>>>>>>>>>>>> ", "Start intent");
-        Log.d("Action >>>>>>>>>>>>>>>>>>>>>> ",  String.valueOf(action));
+        Log.d("CordovaFancyImagePicker", " >>>>>>>>> >>>>>>>>>>>> Start intent");
+        Log.d("CordovaFancyImagePicker",  String.valueOf(action));
 
         if (action.equals("selectPhotos")) {
             String message = args.getString(0);
@@ -33,7 +33,8 @@ public class CordovaFancyImagePicker extends CordovaPlugin {
     }
 
     private void selectPhotos(String message, CallbackContext callbackContext) {
-        Log.d("selectPhotos >>>>>>>> message >>>>>>>>>>>>>> ",  String.valueOf(message));
+        Log.d("CordovaFancyImagePicker", " >>>>>>>>> >>>>>>>>>>>> Start intent");
+        Log.d("CordovaFancyImagePicker",  String.valueOf(message));
 
         if (message != null && message.length() > 0) {
             callbackContext.success(message);
