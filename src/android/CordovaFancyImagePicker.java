@@ -1,4 +1,4 @@
-package cordova-plugin-fancy-image-picker;
+package tech.valiance.ionic;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
