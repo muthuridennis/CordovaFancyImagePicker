@@ -1,5 +1,10 @@
 var exec = require('cordova/exec');
 
-exports.selectPhotos = function(arg0, success, error) {
+var fancyImagePicker = {};
+
+fancyImagePicker.selectPhotos = function(arg0, success, error) {
     exec(success, error, "CordovaFancyImagePicker", "selectPhotos", [arg0]);
 };
+
+
+module.exports = fancyImagePicker;
