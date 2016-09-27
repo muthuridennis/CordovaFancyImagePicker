@@ -1,9 +1,9 @@
  module.exports = {
-  alert: function(title, message, buttonLabel, successCallback) {
+  getPhotos: function(arg0, successCallback, errorCallback) {
     cordova.exec(successCallback,
-                 null, // No failure callback
-                 "Alert",
-                 "alert",
-                 [title, message, buttonLabel]);
+                 errorCallback, // No failure callback
+                 "CordovaFancyImagePicker",
+                 "selectPhotos",
+                 [arg0]);
   }
 };
