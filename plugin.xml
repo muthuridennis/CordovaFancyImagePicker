@@ -2,7 +2,7 @@
 <plugin id="cordova-plugin-fancy-image-picker" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>CordovaFancyImagePicker</name>
     <js-module name="CordovaFancyImagePicker" src="www/CordovaFancyImagePicker.js">
-        <clobbers target="cordova.plugins.CordovaFancyImagePicker" />
+        <clobbers target="fancyImagePicker" />
     </js-module>
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
