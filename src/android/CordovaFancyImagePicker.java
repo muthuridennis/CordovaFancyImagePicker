@@ -27,9 +27,10 @@ public class CordovaFancyImagePicker extends CordovaPlugin {
                 callbackContext.error("Expected one non-empty string argument.");
             }
             this.selectPhotos(message, callbackContext);
-            return true;
+        }else{
+            return false;
         }
-        return false;
+        return true;
     }
 
     private void selectPhotos(String message, CallbackContext callbackContext) {
