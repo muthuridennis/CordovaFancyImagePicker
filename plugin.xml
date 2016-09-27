@@ -1,6 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <plugin id="cordova-plugin-fancy-image-picker" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>CordovaFancyImagePicker</name>
+
+    <description>A Cordova plugin that allows easy picking of the image from a gallery</description>
+
+    <engines>
+        <engine name="cordova" version=">=3.6.0" />
+    </engines>
     
     <js-module name="CordovaFancyImagePicker" src="www/CordovaFancyImagePicker.js">
         <clobbers target="FancyImagePicker" />
@@ -12,7 +18,6 @@
                 <param name="android-package" value="tech.valiance.ionic.CordovaFancyImagePicker" />
             </feature>
         </config-file>
-        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
-        <source-file src="src/android/CordovaFancyImagePicker.java" target-dir="src/tech/valiance/ionic/"/>
+        <source-file src="src/android/CordovaFancyImagePicker.java" target-dir="src/tech/valiance/ionic"/>
     </platform>
 </plugin>
