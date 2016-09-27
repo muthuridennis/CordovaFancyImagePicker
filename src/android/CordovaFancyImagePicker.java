@@ -15,12 +15,19 @@ public class CordovaFancyImagePicker extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("selectPhotos")) {
-            callbackContext.success("Test success in selectPhotos if statement");
             String message = args.getString(0);
-            this.selectPhotos(message, callbackContext);
+
+            if (message != null && message.length() > 0) {
+                callbackContext.success(message);
+            } else {
+                callbackContext.error("Expected one non-empty string argument.");
+            }
+            // this.selectPhotos(message, callbackContext);
             return true;
+        }else{
+            callbackContext.error("Something failed baaaaaadly");
+            return false;
         }
-        return false;
     }
 
     private void selectPhotos(String message, CallbackContext callbackContext) {
