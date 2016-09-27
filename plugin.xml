@@ -9,7 +9,7 @@
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="CordovaFancyImagePicker">
-                <param name="android-package" value="tech.valiance..ionic.CordovaFancyImagePicker" />
+                <param name="android-package" value="tech.valiance.ionic.CordovaFancyImagePicker" />
             </feature>
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml"></config-file>
