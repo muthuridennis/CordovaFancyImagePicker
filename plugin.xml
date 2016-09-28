@@ -18,6 +18,13 @@
                 <param name="android-package" value="tech.valiance.ionic.CordovaFancyImagePicker" />
             </feature>
         </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="tech.valiance.ionic.MultiImageSelect" android:theme="@style/Theme.AppCompat.DayNight" />
+            </activity>
+        </config-file>
+
         <source-file src="src/android/CordovaFancyImagePicker.java" target-dir="src/tech/valiance/ionic"/>
+        <source-file src="src/android/MultiImageSelect.java" target-dir="src/tech/valiance/ionic"/>
     </platform>
 </plugin>
