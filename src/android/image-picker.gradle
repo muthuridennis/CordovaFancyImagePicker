@@ -1,0 +1,9 @@
+repositories {
+    maven { url "https://repo.commonsware.com.s3.amazonaws.com" }
+    maven { url "https://jitpack.io" }
+
+}
+
+dependencies {
+      compile 'com.github.ParkSangGwon:TedPicker:v1.0.10'
+}
