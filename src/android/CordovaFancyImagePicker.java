@@ -42,4 +42,5 @@ public class CordovaFancyImagePicker extends CordovaPlugin {
         } else {
              this.callbackContext.error("No images selected");
          }
+     }
 }
