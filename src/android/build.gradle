@@ -5,4 +5,5 @@ repositories {
 
 dependencies {
       compile 'com.github.ParkSangGwon:TedPicker:v1.0.10'
+      compile 'gun0912.ted:tedbottompicker:1.0.3'
 }
