@@ -2,20 +2,17 @@ package tech.valiance.ionic;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
+
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.util.Log;
-import android.view.View;
 
 import com.gun0912.tedpicker.ImagePickerActivity;
 
 import java.util.ArrayList;
 
-import garden.sky.app.R;
-import gun0912.tedbottompicker.TedBottomPicker;
 
 public class MultiImageSelect extends AppCompatActivity {
     final int INTENT_REQUEST_GET_IMAGES = 13;

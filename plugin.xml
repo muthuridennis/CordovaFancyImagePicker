@@ -23,7 +23,8 @@
             <activity android:name="tech.valiance.ionic.MultiImageSelect" 
                       android:theme="@style/AppTheme"/>
             <activity android:name="com.gun0912.tedpicker.ImagePickerActivity" 
-                      android:screenOrientation="portrait" />
+                      android:screenOrientation="portrait"
+                      android:theme="@style/AppTheme"/>
         </config-file>
         
         <config-file target="AndroidManifest.xml" parent="/manifest">
