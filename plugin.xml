@@ -32,7 +32,7 @@
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
         </config-file>
 
-        <framework src="src/android/image-picker.gradle" custom="true" type="gradleReference" />
+        <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
 
         <resource-file src="src/android/res/image_picker_activity_styles.xml" target="res/values/image_picker_activity_styles.xml" />
 
