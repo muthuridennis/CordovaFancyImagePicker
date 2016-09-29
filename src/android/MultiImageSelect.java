@@ -2,6 +2,7 @@ package tech.valiance.ionic;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,18 +15,31 @@ import com.gun0912.tedpicker.ImagePickerActivity;
 import java.util.ArrayList;
 
 import garden.sky.app.R;
+import gun0912.tedbottompicker.TedBottomPicker;
 
 public class MultiImageSelect extends AppCompatActivity {
     final int INTENT_REQUEST_GET_IMAGES = 13;
+//    final int MAX_IMAGE_COUNT= 5;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Log.d("Images", "<------------ Loading images ------------>");
-        
-        Intent intent  = new Intent(this, ImagePickerActivity.class);
+
+        Intent intent  = new Intent(MultiImageSelect.this, ImagePickerActivity.class);
         startActivityForResult(intent,INTENT_REQUEST_GET_IMAGES);
+//        TedBottomPicker tedBottomPicker = new TedBottomPicker.Builder(MultiImageSelect.this)
+//                .setMaxCount(MAX_IMAGE_COUNT)
+//                .setOnImageSelectedListener(new TedBottomPicker.OnImageSelectedListener() {
+//                    @Override
+//                    public void onImageSelected(Uri uri) {
+//                        Log.i("Images >>", "Uri ------------> " + uri);
+//                    }
+//                })
+//                .create();
+//
+//        tedBottomPicker.show(getSupportFragmentManager());
     }
 
     @Override
