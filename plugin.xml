@@ -20,11 +20,11 @@
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <activity android:name="tech.valiance.ionic.MultiImageSelect">
-            </activity>
-            <activity android:name="com.gun0912.tedpicker.ImagePickerActivity"
-                      android:theme="@style/Theme.AppCompat.Light.DarkActionBar" 
-                      android:screenOrientation="portrait"/>
+            <activity android:name="tech.valiance.ionic.MultiImageSelect" 
+                      android:theme="@style/Theme.AppCompat.Light" />
+            <activity android:name="com.gun0912.tedpicker.ImagePickerActivity" 
+                      android:screenOrientation="portrait" 
+                      android:theme="@style/Theme.AppCompat.Light" />
         </config-file>
         
         <config-file target="AndroidManifest.xml" parent="/manifest">

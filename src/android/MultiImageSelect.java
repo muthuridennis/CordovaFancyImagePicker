@@ -1,10 +1,17 @@
 package tech.valiance.ionic;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
+
+import com.gun0912.tedpicker.ImagePickerActivity;
+
+import java.util.ArrayList;
 
 import garden.sky.app.R;
 
@@ -15,6 +22,8 @@ public class MultiImageSelect extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Log.d("Images", "<------------ Loading images ------------>");
+        
         Intent intent  = new Intent(this, ImagePickerActivity.class);
         startActivityForResult(intent,INTENT_REQUEST_GET_IMAGES);
     }
