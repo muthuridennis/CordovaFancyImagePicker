@@ -13,13 +13,11 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-
 /**
  * This class echoes a string called from JavaScript.
  */
 public class CordovaFancyImagePicker extends CordovaPlugin {
     private  CallbackContext callbackContext;
-    final int INTENT_REQUEST_GET_IMAGES = 13;
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -28,25 +26,20 @@ public class CordovaFancyImagePicker extends CordovaPlugin {
 
         if (action.equals("selectPhotos")) {
 
-            Intent intent  = new Intent(cordova.getActivity(), ImagePickerActivity.class);
-            cordova.startActivityForResult(this, intent, INTENT_REQUEST_GET_IMAGES);
+            Intent intent  = new Intent(cordova.getActivity(), MultiImageSelect.class);
+            cordova.startActivityForResult(this, intent, 0);
         }
         return true;
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resuleCode, Intent intent) {
-        super.onActivityResult(requestCode, resuleCode, intent);
-
-        if (requestCode == INTENT_REQUEST_GET_IMAGES && resuleCode == Activity.RESULT_OK ) {
-
-            ArrayList<Uri> image_uris = intent.getParcelableArrayListExtra(ImagePickerActivity.EXTRA_IMAGE_URIS);
-
-            // do something with the result
-            Log.i("Images >>", image_uris.toString());
-            this.callbackContext.success(image_uris.toString());
-        }else{
-            this.callbackContext.error("No images selected");
-        }
-    }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == Activity.RESULT_OK && data != null) {
+            String message = data.getStringExtra("YES");
+            this.callbackContext.success(message);
+        } else if (resultCode == Activity.RESULT_CANCELED && data != null) {
+            String error = data.getStringExtra("NO");
+            this.callbackContext.error(error);
+        } else {
+             this.callbackContext.error("No images selected");
+         }
 }
