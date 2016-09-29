@@ -36,7 +36,7 @@
 
         <resource-file src="src/android/res/image_picker_activity_styles.xml" target="res/values/image_picker_activity_styles.xml" />
 
-        <framework src="src/android/image-picker.gradle" custom="true" type="gradleReference" />
+        <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
 
         <source-file src="src/android/CordovaFancyImagePicker.java" target-dir="src/tech/valiance/ionic"/>
         <source-file src="src/android/MultiImageSelect.java" target-dir="src/tech/valiance/ionic"/>
