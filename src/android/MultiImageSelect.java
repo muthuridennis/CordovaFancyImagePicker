@@ -21,8 +21,6 @@ public class MultiImageSelect extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Log.d("Images", "<------------ Loading images ------------>");
-
         Intent intent  = new Intent(this, ImagePickerActivity.class);
         startActivityForResult(intent,INTENT_REQUEST_GET_IMAGES);
     }
@@ -30,14 +28,27 @@ public class MultiImageSelect extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resuleCode, Intent intent) {
         super.onActivityResult(requestCode, resuleCode, intent);
+        Intent data;
+        Bundle res;
 
         if (requestCode == INTENT_REQUEST_GET_IMAGES && resuleCode == Activity.RESULT_OK ) {
             ArrayList<Uri> image_uris = intent.getParcelableArrayListExtra(ImagePickerActivity.EXTRA_IMAGE_URIS);
 
-            // do something with the result
-            Log.i("Images >>", image_uris.toString());
+            data = new Intent();
+            res = new Bundle();
+
+            res.putInt("SELECTED", image_uris.size());
+            res.putParcelableArrayList("URIS", image_uris);
+            data.putExtras(res);
+            setResult(RESULT_OK, data);
+            finish();
         }else{
-            Log.i("Images >>", "These images are not there");
+            data = new Intent();
+            res = new Bundle();
+            res.putString("MESSAGE", "No images selected");
+            data.putExtras(res);
+            setResult(RESULT_CANCELED, data);
+            finish();
         }
     }
 }
