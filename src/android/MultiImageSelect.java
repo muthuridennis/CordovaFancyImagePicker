@@ -9,7 +9,6 @@ import android.os.Bundle;
 
 import android.util.Log;
 
-import com.gun0912.tedpicker.Config;
 import com.gun0912.tedpicker.ImagePickerActivity;
 
 import java.util.ArrayList;
@@ -21,15 +20,6 @@ public class MultiImageSelect extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle extras = getIntent().getExtras();
-
-        Config config = new Config();
-        if (extras != null) {
-            int SELECTION_LIMIT = extras.getInt("SELECTION_LIMIT");
-
-            config.setSelectionLimit(SELECTION_LIMIT);
-        }
-        ImagePickerActivity.setConfig(config);
 
         Intent intent  = new Intent(this, ImagePickerActivity.class);
         startActivityForResult(intent,INTENT_REQUEST_GET_IMAGES);
