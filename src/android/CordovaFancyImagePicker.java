@@ -26,12 +26,12 @@ public class CordovaFancyImagePicker extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-
         this.callbackContext = callbackContext;
 
         if (action.equals("selectPhotos")) {
-
             Intent intent  = new Intent(cordova.getActivity(), MultiImageSelect.class);
+
+            intent.putExtra("SELECTION_LIMIT",  args.getInt(1));
             cordova.startActivityForResult(this, intent, 0);
         }
         return true;
