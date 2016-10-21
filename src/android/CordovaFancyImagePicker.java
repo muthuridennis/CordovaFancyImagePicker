@@ -38,7 +38,7 @@ public class CordovaFancyImagePicker extends CordovaPlugin {
             final ArrayList<String> photos = data.getStringArrayListExtra("PHOTOS");
             final ArrayList<String> base64Array = new ArrayList<String>();
 
-            cordova.getThreadPool().execute(new Runnable() {
+            cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     for (String photo : photos) {
