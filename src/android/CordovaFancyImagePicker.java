@@ -38,7 +38,7 @@ public class CordovaFancyImagePicker extends CordovaPlugin {
             final ArrayList<String> photos = data.getStringArrayListExtra("PHOTOS");
             final ArrayList<String> base64Array = new ArrayList<String>();
 
-            cordova.getActivity().runOnUiThread(new Runnable() {
+            cordova.getActivity().runOnUiThread (new Runnable() {
                 @Override
                 public void run() {
                     for (String photo : photos) {
@@ -62,7 +62,7 @@ public class CordovaFancyImagePicker extends CordovaPlugin {
     private String convertToBase64(Uri uri){
         Bitmap bm = BitmapFactory.decodeFile(String.valueOf(uri));
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.JPEG, 60, stream); //bm is the bitmap object
+        bm.compress(Bitmap.CompressFormat.JPEG, 30, stream); //bm is the bitmap object
         byte[] byteArrayImage = stream.toByteArray();
 
         String encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT);
