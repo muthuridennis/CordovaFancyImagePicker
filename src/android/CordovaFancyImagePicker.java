@@ -11,18 +11,15 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Parcelable;
+
 import android.util.Base64;
 import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-/**
- * This class echoes a string called from JavaScript.
- */
 public class CordovaFancyImagePicker extends CordovaPlugin {
-    private  CallbackContext callbackContext;
+    private CallbackContext callbackContext;
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -30,7 +27,6 @@ public class CordovaFancyImagePicker extends CordovaPlugin {
         this.callbackContext = callbackContext;
 
         if (action.equals("selectPhotos")) {
-
             Intent intent  = new Intent(cordova.getActivity(), MultiImageSelect.class);
             cordova.startActivityForResult(this, intent, 0);
         }
@@ -39,16 +35,22 @@ public class CordovaFancyImagePicker extends CordovaPlugin {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK && data != null) {
-            ArrayList<Parcelable> uris = data.getParcelableArrayListExtra("URIS");
-            ArrayList<String> base64Array = new ArrayList<String>();
+            final ArrayList<String> photos = data.getStringArrayListExtra("PHOTOS");
+            final ArrayList<String> base64Array = new ArrayList<String>();
 
-            for (Parcelable p : uris) {
-                Uri uri = (Uri) p;
-                base64Array.add(convertToBase64(uri));
-            }
+            cordova.getThreadPool().execute(new Runnable() {
+                @Override
+                public void run() {
+                    for (String photo : photos) {
+                        Uri uri = Uri.parse(photo);
+                        base64Array.add(convertToBase64(uri));
+                    }
 
-            JSONArray res = new JSONArray(base64Array);
-            this.callbackContext.success(res);
+                    JSONArray res = new JSONArray(base64Array);
+
+                    callbackContext.success(res);
+                }
+            });
         } else if (resultCode == Activity.RESULT_CANCELED && data != null) {
             String error = data.getStringExtra("MESSAGE");
             this.callbackContext.error(error);

@@ -1,44 +1,42 @@
 package tech.valiance.ionic;
 
-import android.app.Activity;
 import android.content.Intent;
 
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import android.util.Log;
-
-import com.gun0912.tedpicker.ImagePickerActivity;
-
 import java.util.ArrayList;
 
+import me.iwf.photopicker.PhotoPicker;
 
 public class MultiImageSelect extends AppCompatActivity {
-    final int INTENT_REQUEST_GET_IMAGES = 13;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent intent  = new Intent(this, ImagePickerActivity.class);
-        startActivityForResult(intent,INTENT_REQUEST_GET_IMAGES);
+        PhotoPicker.builder()
+                .setPhotoCount(5)
+                .setShowCamera(true)
+                .setPreviewEnabled(false)
+                .start(this, PhotoPicker.REQUEST_CODE);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resuleCode, Intent intent) {
-        super.onActivityResult(requestCode, resuleCode, intent);
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
         Intent data;
         Bundle res;
 
-        if (requestCode == INTENT_REQUEST_GET_IMAGES && resuleCode == Activity.RESULT_OK ) {
-            ArrayList<Uri> image_uris = intent.getParcelableArrayListExtra(ImagePickerActivity.EXTRA_IMAGE_URIS);
+        if (resultCode == RESULT_OK && requestCode == PhotoPicker.REQUEST_CODE) {
+            ArrayList<String> photos =
+                    intent.getStringArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS);
 
             data = new Intent();
             res = new Bundle();
 
-            res.putInt("SELECTED", image_uris.size());
-            res.putParcelableArrayList("URIS", image_uris);
+            res.putInt("SELECTED", photos.size());
+            res.putStringArrayList("PHOTOS", photos);
             data.putExtras(res);
             setResult(RESULT_OK, data);
             finish();
