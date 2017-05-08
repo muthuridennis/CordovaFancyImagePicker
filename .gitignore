@@ -1,2 +1,4 @@
 .idea/
 npm-debug.log
+src/android/gradle*
+src/android/local.properties

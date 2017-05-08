@@ -15,6 +15,9 @@ public class MultiImageSelect extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Intent multiImageIntent = getIntent();
+        Int maxImages = multiImageIntent.getIntExtra("maxImages");
+        
         PhotoPicker.builder()
                 .setPhotoCount(5)
                 .setShowCamera(true)

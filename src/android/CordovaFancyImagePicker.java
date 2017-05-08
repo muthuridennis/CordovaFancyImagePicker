@@ -28,6 +28,10 @@ public class CordovaFancyImagePicker extends CordovaPlugin {
 
         if (action.equals("selectPhotos")) {
             Intent intent  = new Intent(cordova.getActivity(), MultiImageSelect.class);
+
+            //Take the values from the arguments
+            intent.putExtra("maxImages", args.getInt(0));
+            
             cordova.startActivityForResult(this, intent, 0);
         }
         return true;
@@ -62,7 +66,7 @@ public class CordovaFancyImagePicker extends CordovaPlugin {
     private String convertToBase64(Uri uri){
         Bitmap bm = BitmapFactory.decodeFile(String.valueOf(uri));
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.JPEG, 30, stream); //bm is the bitmap object
+        bm.compress(Bitmap.CompressFormat.JPEG, 10, stream); //bm is the bitmap object
         byte[] byteArrayImage = stream.toByteArray();
 
         String encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT);
