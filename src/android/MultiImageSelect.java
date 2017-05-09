@@ -10,16 +10,17 @@ import java.util.ArrayList;
 import me.iwf.photopicker.PhotoPicker;
 
 public class MultiImageSelect extends AppCompatActivity {
+    private int DEFAULT_MAX_IMAGES  = 5;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Intent multiImageIntent = getIntent();
-        Int maxImages = multiImageIntent.getIntExtra("maxImages");
+        Integer maxImages = multiImageIntent.getIntExtra("maxImages", DEFAULT_MAX_IMAGES);
         
         PhotoPicker.builder()
-                .setPhotoCount(5)
+                .setPhotoCount(maxImages)
                 .setShowCamera(true)
                 .setPreviewEnabled(false)
                 .start(this, PhotoPicker.REQUEST_CODE);
