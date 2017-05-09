@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 public class CordovaFancyImagePicker extends CordovaPlugin {
     private CallbackContext callbackContext;
+    private int quality = 10;
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -31,6 +32,8 @@ public class CordovaFancyImagePicker extends CordovaPlugin {
 
             //Take the values from the arguments
             intent.putExtra("maxImages", args.getInt(0));
+
+            this.quality = args.getInt(1);
             
             cordova.startActivityForResult(this, intent, 0);
         }
@@ -66,7 +69,7 @@ public class CordovaFancyImagePicker extends CordovaPlugin {
     private String convertToBase64(Uri uri){
         Bitmap bm = BitmapFactory.decodeFile(String.valueOf(uri));
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.JPEG, 10, stream); //bm is the bitmap object
+        bm.compress(Bitmap.CompressFormat.JPEG, this.quality, stream); //bm is the bitmap object
         byte[] byteArrayImage = stream.toByteArray();
 
         String encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT);
