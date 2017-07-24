@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class CordovaFancyImagePicker extends CordovaPlugin {
     private CallbackContext callbackContext;
-    private int quality = 10;
+    private int quality;
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -69,10 +69,27 @@ public class CordovaFancyImagePicker extends CordovaPlugin {
     private String convertToBase64(Uri uri){
         Bitmap bm = BitmapFactory.decodeFile(String.valueOf(uri));
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.JPEG, this.quality, stream); //bm is the bitmap object
+
+        // Log.d("Quality of compression", String.valueOf(this.quality));
+        // Log.d("OWidth >>>", String.valueOf(bm.getWidth()));
+        // Log.d("OHeight >>>", String.valueOf(bm.getHeight()));
+
+        int nh = (int) ( bm.getHeight() * (570.0 / bm.getWidth()) );
+        Bitmap scaled = Bitmap.createScaledBitmap(bm, 570, nh, true);
+
+        // Log.d("NWidth >>>", String.valueOf(scaled.getWidth()));
+        // Log.d("NHeight >>>", String.valueOf(scaled.getHeight()));
+
+        scaled.compress(Bitmap.CompressFormat.JPEG, 95, stream); //bm is the bitmap object
+
         byte[] byteArrayImage = stream.toByteArray();
+        long imageLength = byteArrayImage.length / 1024;
+
+        // Log.d("ImageSize >>> ", String.valueOf(imageLength));
 
         String encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT);
+        
+        // Log.d("encodedImage.length()", String.valueOf(encodedImage.length()));
 
         return encodedImage;
     }
