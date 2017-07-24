@@ -1,6 +1,6 @@
 {
   "name": "cordova-fancy-image-picker",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A multi-image selector for cordova based on the PhotoPicker android plugin",
   "main": "index.js",
   "scripts": {
